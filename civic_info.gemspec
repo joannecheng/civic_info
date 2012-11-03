@@ -11,4 +11,5 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://github.com/joannecheng/civic_info'
 
   s.add_dependency "httparty"
+  s.add_dependency 'active_support'
 end

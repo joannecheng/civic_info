@@ -1,5 +1,6 @@
 require 'httparty'
 require 'active_support/core_ext/hash/indifferent_access'
+
 class GoogleAPI
 
   def initialize(api_key, service_name)
@@ -8,6 +9,8 @@ class GoogleAPI
   end
 
   def get(call_string, body = {})
+    puts call_string
+    puts "#{@service_url}#{call_string}?key=#{@api_key}"
     HTTParty.get("#{@service_url}#{call_string}?key=#{@api_key}",
       :body => body 
     ).with_indifferent_access

@@ -1,0 +1,15 @@
+# Civic Info
+
+Note: You MUST have a google API key, and it must be set in your environment as GOOGLE_API_KEY
+
+```
+gem install civic_info
+```
+
+```ruby
+ci = CivicInfo.new
+
+ci.elections
+
+ci.voterInfo(election_id, address_string)
+```

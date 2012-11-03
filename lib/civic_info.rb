@@ -1,4 +1,5 @@
-require 'httparty'
+require 'faraday'
+require 'json'
 require 'active_support/core_ext/hash/indifferent_access'
 
 class GoogleAPI
@@ -6,18 +7,21 @@ class GoogleAPI
   def initialize(api_key, service_name)
     @api_key = ENV['GOOGLE_API_KEY']
     @service_url = "https://www.googleapis.com#{service_name}"
+    @conn = Faraday.new(:url => @service_url)
   end
 
   def get(call_string)
-    HTTParty.get("#{@service_url}#{call_string}?key=#{@api_key}").with_indifferent_access
+    JSON.parse(@conn.get("#{call_string}?key=#{@api_key}").body).with_indifferent_access
   end
 
-  def post(call_string, body = {})
-    HTTParty.post("#{@service_url}#{call_string}?key=#{@api_key}",
-      :body => body 
-    ).with_indifferent_access
+  def post(call_string, body)
+    response = @conn.post do |conn|
+      conn.url "#{call_string}?key=#{@api_key}"
+      conn.headers['Content-Type'] = 'application/json' 
+      conn.body = body.to_json
+    end
+    JSON.parse(response.body).with_indifferent_access
   end
-
 
 end
 

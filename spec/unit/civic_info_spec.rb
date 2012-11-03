@@ -27,7 +27,7 @@ describe CivicInfo do
   describe '#voter_info' do
     it 'gets voter info' do
       ci = CivicInfo.new()
-      ci.voter_info(4000, 'Market Street Station Denver, CO')
+      ci.voter_info(4000, '1263 Pacific Ave. Kansas City KS')[:kind].should == "civicinfo#voterInfoResponse"
     end
   end
 

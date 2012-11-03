@@ -12,6 +12,23 @@ gem install civic_info
 => {"kind"=>"civicinfo#electionsQueryResponse", "elections"=>[{"id"=>"2000", "name"=>"VIP Test Election", "
 electionDay"=>"2013-06-06"}, {"id"=>"4000", "name"=>"U.S. 2012 General Election", 
 "electionDay"=>"2012-11-06"}]}
-> ci.voter_info(election_id, address_string)
-=>
+> ci.voter_info(4000, '1263 Pacific Ave. Kansas City KS')
+=> {
+                "kind" => "civicinfo#voterInfoResponse",
+              "status" => "success",
+            "election" => {
+                 "id" => "4000",
+               "name" => "U.S. 2012 General Election",
+        "electionDay" => "2012-11-06"
+    },
+     "normalizedInput" => {
+        "line1" => "1263 Pacific Ave",
+         "city" => "Kansas City",
+        "state" => "KS",
+          "zip" => "66102"
+    },
+    "pollingLocations" => [
+        [0] {
+                 "address" => {
+.....
 ```

@@ -7,9 +7,9 @@ gem install civic_info
 ```
 
 ```ruby
-ci = CivicInfo.new
-
-ci.elections
-
-ci.voterInfo(election_id, address_string)
+> ci = CivicInfo.new
+> ci.elections
+=> {"kind"=>"civicinfo#electionsQueryResponse", "elections"=>[{"id"=>"2000", "name"=>"VIP Test Election", "electionDay"=>"2013-06-06"}, {"id"=>"4000", "name"=>"U.S. 2012 General Election", "electionDay"=>"2012-11-06"}]}
+> ci.voter_info(election_id, address_string)
+=>
 ```

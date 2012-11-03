@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     civic_info (0.0.0)
+      active_support
       httparty
 
 GEM

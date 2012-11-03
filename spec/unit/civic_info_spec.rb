@@ -24,4 +24,11 @@ describe CivicInfo do
     end
   end
 
+  describe '#voter_info' do
+    it 'gets voter info' do
+      ci = CivicInfo.new()
+      ci.voter_info(4000, 'Market Street Station Denver, CO')
+    end
+  end
+
 end

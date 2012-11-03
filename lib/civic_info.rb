@@ -8,13 +8,16 @@ class GoogleAPI
     @service_url = "https://www.googleapis.com#{service_name}"
   end
 
-  def get(call_string, body = {})
-    puts call_string
-    puts "#{@service_url}#{call_string}?key=#{@api_key}"
-    HTTParty.get("#{@service_url}#{call_string}?key=#{@api_key}",
+  def get(call_string)
+    HTTParty.get("#{@service_url}#{call_string}?key=#{@api_key}").with_indifferent_access
+  end
+
+  def post(call_string, body = {})
+    HTTParty.post("#{@service_url}#{call_string}?key=#{@api_key}",
       :body => body 
     ).with_indifferent_access
   end
+
 
 end
 
@@ -27,14 +30,14 @@ class CivicInfo
 
   def elections
     call_string = 'elections'
-    @google_api.get(call_string, {})
+    @google_api.get(call_string)
   end
 
   def voter_info(election_id, address)
     call_string = "voterinfo/#{election_id}/lookup"
     body = { :address => address }
 
-    @google_api.get(call_string, body)
+    @google_api.post(call_string, body)
   end
 
 end

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'civic_info'
-  s.version     = '0.0.0'
+  s.version     = '1.0.0'
   s.date        = '2012-11-03'
   s.summary     = 'Wrapper to Google\'s civic info API'
   s.description = ""
